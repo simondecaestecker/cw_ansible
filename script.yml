@@ -1,0 +1,23 @@
+---
+- hosts: test-simon
+  become: yes
+
+  tasks:
+    - name: Installation de pycurl pour authoriser apt_repository
+      apt:
+        name=python-pycurl
+        update_cache=yes
+
+    - name: Ajout du repository
+      apt_repository:
+        repo='deb http://download.opensuse.org/repositories/isv:/ownCloud:/community/xUbuntu_14.04/ /'
+        state=present
+
+    - name: Ajout de la clé
+      apt_key:
+        url='http://download.opensuse.org/repositories/isv:ownCloud:community/xUbuntu_14.04/Release.key'
+
+    - name: Apt-get update & Insallation de owncloud
+      apt:
+        name=owncloud
+        update_cache=yes
