@@ -1,5 +1,5 @@
 ---
-- hosts: test-simon
+- hosts: local
   become: yes
 
   tasks:
@@ -10,12 +10,12 @@
 
     - name: Ajout du repository
       apt_repository:
-        repo='deb http://download.opensuse.org/repositories/isv:/ownCloud:/community/xUbuntu_14.04/ /'
+        repo='deb http://download.owncloud.org/download/repositories/stable/Ubuntu_16.04/ /'
         state=present
 
     - name: Ajout de la clé
       apt_key:
-        url='http://download.opensuse.org/repositories/isv:ownCloud:community/xUbuntu_14.04/Release.key'
+        url='https://download.owncloud.org/download/repositories/stable/Ubuntu_16.04/Release.key'
 
     - name: Apt-get update & Insallation de owncloud
       apt:
