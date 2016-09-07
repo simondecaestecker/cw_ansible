@@ -17,8 +17,19 @@
       apt_key:
         url='https://download.owncloud.org/download/repositories/stable/Ubuntu_16.04/Release.key'
 
-    - name: Apt-get update & Insallation de owncloud
+    - name: Apt-get update & Installation de ownCloud
       apt:
         name=owncloud
         allow_unauthenticated=yes
         update_cache=yes
+
+    - name: Apache2 DocumentRoot on ownCloud folder
+      lineinfile: dest=/etc/apache2/sites-available/000-default.conf regexp="^DocumentRoot /var/www/html" line="DocumentRoot /var/www/owncloud" state=present
+      notify:
+        - restart apache2
+
+  handlers:
+    - name: restart apache2
+      service:
+        name=apache2
+        state=restarted
