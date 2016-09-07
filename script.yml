@@ -20,4 +20,5 @@
     - name: Apt-get update & Insallation de owncloud
       apt:
         name=owncloud
+        allow_unauthenticated=yes
         update_cache=yes
