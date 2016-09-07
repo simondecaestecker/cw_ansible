@@ -3,7 +3,7 @@
   become: yes
 
   tasks:
-    - name: Installation de pycurl pour authoriser apt_repository
+    - name: Installation de pycurl pour autoriser apt_repository
       apt:
         name=python-pycurl
         update_cache=yes
