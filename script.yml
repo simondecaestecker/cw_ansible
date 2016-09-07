@@ -24,7 +24,11 @@
         update_cache=yes
 
     - name: Apache2 DocumentRoot on ownCloud folder
-      lineinfile: dest=/etc/apache2/sites-available/000-default.conf regexp="^DocumentRoot /var/www/html" line="DocumentRoot /var/www/owncloud" state=present
+      lineinfile:
+        dest=/etc/apache2/sites-available/000-default.conf
+        regexp="^DocumentRoot \/var\/www\/html"
+        line="DocumentRoot /var/www/owncloud"
+        state=present
       notify:
         - restart apache2
 
