@@ -17,11 +17,14 @@
       apt_key:
         url='https://download.owncloud.org/download/repositories/stable/Ubuntu_16.04/Release.key'
 
-    - name: Apt-get update & Installation de ownCloud
+    - name: Apt-get update
+      apt:
+        update_cache=yes
+
+    - name: Installation de ownCloud
       apt:
         name=owncloud
         allow_unauthenticated=yes
-        update_cache=yes
 
     - name: Apache2 DocumentRoot on ownCloud folder
       copy:
